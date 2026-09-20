@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>KIM ZAYN</title>
+
+<style>
+:root{
+    --neon:#00ff41;
+    --danger:#ff003c;
+    --gold:#ffea00;
+    --bg:#050505;
+    --panel:#0d0e12;
+    --line:#292b35;
+    --blue:#68a7ff;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+}
+
+body{
+    background:var(--bg);
+    color:#fff;
+    font-family:'Segoe UI',sans-serif;
+    user-select:none;
+}
+
+.header-container{
+    width:100%;
+    text-align:center;
+    padding:28px 8px 18px;
+}
+
+.zigzag-name{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:4px;
+    color:#fff;
+    text-transform:uppercase;
+    text-shadow:
+        2px 2px var(--danger),
+        -2px -2px var(--neon),
+        0 0 20px var(--neon);
+    animation:glitch 1.5s infinite;
+}
+
+@keyframes glitch{
+    0%{
+        transform:skew(0deg);
+    }
+
+    20%{
+        transform:skew(-3deg);
+        text-shadow:
+            2px 2px var(--neon),
+            -2px -2px var(--danger);
+    }
+
+    40%{
+        transform:skew(3deg);
+    }
+
+    100%{
+        transform:skew(0deg);
+    }
+}
+
+
+/* MAIN BOX */
+
+.glass-box{
+    width:calc(100% - 16px);
+    max-width:680px;
+    margin:0 auto 20px;
+    padding:14px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(0,255,65,.18);
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    overflow:hidden;
+}
+
+
+/* LOGIN */
+
+#loginPage{
+    text-align:center;
+}
+
+input{
+    display:block;
+    width:100%;
+    max-width:100%;
+    padding:15px;
+    margin:15px 0;
+    background:rgba(0,0,0,.6);
+    border:1px solid #333;
+    border-radius:12px;
+    color:var(--neon);
+    font-size:16px;
+    outline:none;
+    text-align:center;
+}
+
+.btn-main{
+    display:block;
+    width:100%;
+    padding:15px;
+    background:linear-gradient(
+        45deg,
+        var(--neon),
+        #008f11
+    );
+    border:none;
+    border-radius:12px;
+    color:#000;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    cursor:pointer;
+}
+
+
+/* CURRENT PREDICTION */
+
+.current-card{
+    width:100%;
+    padding:14px;
+    border:1px solid rgba(0,255,65,.15);
+    border-radius:15px;
+    background:rgba(0,255,65,.025);
+    text-align:center;
+}
+
+#pID{
+    color:#888;
+    font-size:13px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.pred-val{
+    font-size:48px;
+    font-weight:900;
+    margin:8px 0;
+    text-shadow:0 0 20px var(--neon);
+}
+
+#pOpps{
+    width:100%;
+    color:var(--gold);
+    font-size:13px;
+    font-weight:bold;
+    border:1px dashed var(--gold);
+    padding:8px;
+    border-radius:8px;
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+#historyBox{
+    width:100%;
+    max-width:100%;
+    margin-top:18px;
+    border:1px solid #30313a;
+    border-radius:16px;
+    overflow:hidden;
+    background:#0d0e12;
+    box-shadow:0 0 25px rgba(0,0,0,.5);
+}
+
+
+/*
+ IMPORTANT:
+ No min-width.
+ No horizontal overflow.
+ Table always fits inside phone.
+*/
+
+.history-scroll{
+    width:100%;
+    max-width:100%;
+    overflow:hidden;
+}
+
+.history-table{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    table-layout:fixed;
+    border-collapse:collapse;
+}
+
+
+/* Column widths */
+
+.history-table th:nth-child(1),
+.history-table td:nth-child(1){
+    width:22%;
+}
+
+.history-table th:nth-child(2),
+.history-table td:nth-child(2){
+    width:10%;
+}
+
+.history-table th:nth-child(3),
+.history-table td:nth-child(3){
+    width:14%;
+}
+
+.history-table th:nth-child(4),
+.history-table td:nth-child(4){
+    width:14%;
+}
+
+.history-table th:nth-child(5),
+.history-table td:nth-child(5){
+    width:21%;
+}
+
+.history-table th:nth-child(6),
+.history-table td:nth-child(6){
+    width:19%;
+}
+
+
+/* Header */
+
+.history-table th{
+    height:52px;
+    padding:7px 2px;
+    background:#17181e;
+    color:#777b88;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.3px;
+    border-bottom:2px solid #292b35;
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+
+/* Rows */
+
+.history-table td{
+    height:55px;
+    padding:6px 2px;
+    text-align:center;
+    border-bottom:1px solid #292b35;
+    background:#0d0e12;
+    font-size:11px;
+    font-weight:700;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.history-table tr:last-child td{
+    border-bottom:none;
+}
+
+
+/* PERIOD */
+
+.period{
+    color:#e7e7e7;
+    font-size:10px !important;
+    font-weight:500 !important;
+}
+
+
+/* NUMBER */
+
+.num{
+    font-size:19px !important;
+    font-weight:900 !important;
+}
+
+.big-num{
+    color:#ff405d;
+}
+
+.small-num{
+    color:#36dc77;
+}
+
+
+/* BIG / SMALL */
+
+.bs-big,
+.pred-big{
+    color:#32d46b;
+    font-size:13px;
+    font-weight:900;
+}
+
+.bs-small,
+.pred-small{
+    color:#72a9ff;
+    font-size:13px;
+    font-weight:900;
+}
+
+
+/* P-NUM */
+
+.pnum{
+    color:#ffd43b;
+    font-size:11px !important;
+    font-weight:900;
+}
+
+
+/* RESULT */
+
+.result{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:calc(100% - 3px);
+    max-width:64px;
+    padding:6px 2px;
+    border-radius:8px;
+    font-size:9px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.result.win{
+    background:rgba(0,255,65,.14);
+    color:#28d96b;
+}
+
+.result.loss{
+    background:rgba(255,0,60,.16);
+    color:#ff4b62;
+}
+
+.result.jackpot{
+    background:linear-gradient(
+        135deg,
+        #ff9d22,
+        #ff4d8d,
+        #d42bff
+    );
+    color:#fff;
+}
+
+
+/* EMPTY */
+
+.empty{
+    color:#555 !important;
+    padding:20px !important;
+    text-align:center !important;
+}
+
+
+/* NEW RESULT ANIMATION */
+
+.new-row td{
+    animation:newRow .65s ease;
+}
+
+@keyframes newRow{
+    0%{
+        background:rgba(0,255,65,.20);
+    }
+
+    100%{
+        background:#0d0e12;
+    }
+}
+
+
+/* FOOTER */
+
+.footer-branding{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    text-align:center;
+}
+
+.name-box{
+    display:inline-block;
+    padding:10px 30px;
+    border:1px solid var(--neon);
+    border-radius:5px;
+    color:var(--neon);
+    font-weight:bold;
+    letter-spacing:3px;
+    cursor:pointer;
+    background:rgba(0,255,65,.05);
+}
+
+
+/* SOUND BUTTON */
+
+.sound-btn{
+    position:fixed;
+    right:13px;
+    bottom:13px;
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    border:1px solid var(--neon);
+    background:#071009;
+    color:var(--neon);
+    font-size:18px;
+    z-index:500;
+    cursor:pointer;
+}
+
+
+/* ADMIN */
+
+.admin-modal{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:calc(100% - 30px);
+    max-width:350px;
+    background:#000;
+    border:2px solid var(--gold);
+    border-radius:20px;
+    padding:20px;
+    z-index:1000;
+}
+
+.admin-modal select{
+    width:100%;
+    padding:12px;
+    background:#111;
+    color:#fff;
+    border:1px solid #444;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    z-index:999;
+}
+
+.hidden{
+    display:none !important;
+}
+
+
+/* EXTRA SMALL PHONES */
+
+@media(max-width:360px){
+
+    .glass-box{
+        width:calc(100% - 10px);
+        padding:9px 5px;
+    }
+
+    .zigzag-name{
+        font-size:27px;
+        letter-spacing:2px;
+    }
+
+    .history-table th{
+        font-size:9px;
+        padding:6px 1px;
+    }
+
+    .history-table td{
+        font-size:10px;
+        padding:5px 1px;
+    }
+
+    .period{
+        font-size:9px !important;
+    }
+
+    .num{
+        font-size:17px !important;
+    }
+
+    .bs-big,
+    .bs-small,
+    .pred-big,
+    .pred-small{
+        font-size:11px;
+    }
+
+    .pnum{
+        font-size:10px !important;
+    }
+
+    .result{
+        font-size:8px;
+        padding:5px 1px;
+    }
+}
+</style>
+</head>
+
+
+<body oncontextmenu="return false;">
+
+<!-- HEADER -->
+
+<div class="header-container">
+
+    <div class="zigzag-name">
+        𝐐𝐮𝐢𝐜𝐤𝐓𝐫𝐚𝐝𝐞 𝐏𝐫𝐨
+    </div>
+
+    <div style="
+        color:var(--gold);
+        font-size:10px;
+        letter-spacing:4px;
+        margin-top:5px;
+    ">
+        OWNER KIM ZAYN
+    </div>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div id="loginPage" class="glass-box">
+
+    <h3 style="
+        margin:0;
+        color:var(--neon);
+        font-size:14px;
+    ">
+        ENTER LICENSE
+    </h3>
+
+    <input
+        type="text"
+        id="keyIn"
+        placeholder="FB-VIP-XXXXX"
+    >
+
+    <button
+        class="btn-main"
+        onclick="startSystem()"
+    >
+        ACTIVATE
+    </button>
+
+    <p
+        id="err"
+        style="
+            color:var(--danger);
+            font-size:12px;
+            margin-top:10px;
+        "
+    ></p>
+
+</div>
+
+
+<!-- APP -->
+
+<div id="appPage" class="glass-box hidden">
+
+    <!-- CURRENT -->
+
+    <div class="current-card">
+
+        <div id="pID">
+            PERIOD: ---
+        </div>
+
+        <div
+            class="pred-val"
+            id="pRes"
+        >
+            WAIT...
+        </div>
+
+        <div id="pOpps">
+            ANALYZING...
+        </div>
+
+    </div>
+
+
+    <!-- HISTORY -->
+
+    <div id="historyBox">
+
+        <div class="history-scroll">
+
+            <table class="history-table">
+
+                <thead>
+
+                    <tr>
+                        <th>PERIOD</th>
+                        <th>NUM</th>
+                        <th>B/S</th>
+                        <th>PRED</th>
+                        <th>P-NUM</th>
+                        <th>RES</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="logs">
+
+                    <tr>
+                        <td
+                            colspan="6"
+                            class="empty"
+                        >
+                            WAITING FOR HISTORY...
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <button
+        onclick="logout()"
+        style="
+            display:block;
+            margin:15px auto 0;
+            background:transparent;
+            color:#444;
+            border:none;
+            font-size:10px;
+            cursor:pointer;
+        "
+    >
+        LOGOUT
+    </button>
+
+</div>
+
+
+<!-- VIP -->
+
+<div class="footer-branding">
+
+    <div
+        class="name-box"
+        onclick="triggerAdmin()"
+    >
+        𝗩𝗜𝗣
+    </div>
+
+</div>
+
+
+<!-- SOUND -->
+
+<button
+    id="soundBtn"
+    class="sound-btn"
+    onclick="toggleSound()"
+>
+    🔊
+</button>
+
+
+<!-- OVERLAY -->
+
+<div
+    id="overlay"
+    class="overlay hidden"
+    onclick="closeAdmin()"
+></div>
+
+
+<!-- ADMIN -->
+
+<div
+    id="adminPanel"
+    class="admin-modal hidden"
+>
+
+    <h3 style="
+        color:var(--gold);
+        text-align:center;
+        margin-top:0;
+    ">
+        MASTER CONTROL
+    </h3>
+
+    <select id="keyValidity">
+
+        <option value="30">
+            30 MINUTES
+        </option>
+
+        <option value="1440">
+            1 DAY
+        </option>
+
+        <option value="10080">
+            7 DAYS
+        </option>
+
+        <option value="43200">
+            30 DAYS
+        </option>
+
+    </select>
+
+    <button
+        class="btn-main"
+        style="
+            background:var(--gold);
+            color:#000;
+            margin-top:15px;
+        "
+        onclick="genKey()"
+    >
+        GENERATE KEY
+    </button>
+
+    <div
+        id="outKey"
+        style="
+            margin-top:15px;
+            color:var(--neon);
+            font-size:11px;
+            word-break:break-all;
+        "
+    ></div>
+
+</div>
+
+
+<script>
+
+/* =====================================
+   ORIGINAL SETTINGS
+===================================== */
+
+const ADMIN_PASS = "Fab009";
+
+const B_POOL = [5,6,7,8,9];
+
+const S_POOL = [0,1,2,3,4];
+
+let currentOpposites = [];
+
+let soundEnabled = true;
+
+let audioCtx = null;
+
+
+/* =====================================
+   SOUND
+===================================== */
+
+function initAudio(){
+
+    if(!audioCtx){
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if(AudioContext){
+            audioCtx = new AudioContext();
+        }
+    }
+
+    if(
+        audioCtx &&
+        audioCtx.state === "suspended"
+    ){
+        audioCtx.resume();
+    }
+}
+
+
+function playTone(
+    frequency,
+    duration
+){
+
+    if(!soundEnabled) return;
+
+    initAudio();
+
+    if(!audioCtx) return;
+
+    const now =
+        audioCtx.currentTime;
+
+    const oscillator =
+        audioCtx.createOscillator();
+
+    const gain =
+        audioCtx.createGain();
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audioCtx.destination
+    );
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.setValueAtTime(
+        frequency,
+        now
+    );
+
+    gain.gain.setValueAtTime(
+        0.0001,
+        now
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.12,
+        now + 0.02
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        now + duration
+    );
+
+    oscillator.start(now);
+
+    oscillator.stop(
+        now + duration + 0.02
+    );
+}
+
+
+function playResultSound(type){
+
+    if(!soundEnabled) return;
+
+    if(type === "jackpot"){
+
+        playTone(880,.20);
+
+        setTimeout(
+            () => playTone(1175,.25),
+            100
+        );
+
+    }
+    else if(type === "win"){
+
+        playTone(660,.22);
+
+    }
+    else{
+
+        playTone(220,.25);
+    }
+}
+
+
+function toggleSound(){
+
+    soundEnabled =
+        !soundEnabled;
+
+    document
+        .getElementById("soundBtn")
+        .innerText =
+        soundEnabled
+        ? "🔊"
+        : "🔇";
+
+    if(soundEnabled){
+        initAudio();
+    }
+}
+
+
+/* =====================================
+   KEY
+===================================== */
+
+function validateKeyFormat(key){
+
+    if(
+        !key.startsWith("FB-VIP-")
+    ){
+        return false;
+    }
+
+    try{
+
+        const parts =
+            key.split("-");
+
+        const expiry =
+            parseInt(
+                atob(parts[3])
+            );
+
+        return expiry > Date.now();
+
+    }catch(e){
+
+        return false;
+    }
+}
+
+
+/* =====================================
+   LOAD SAVED KEY
+===================================== */
+
+window.onload = () => {
+
+    const savedKey =
+        localStorage.getItem(
+            "SR_ACTIVE_KEY"
+        );
+
+    if(
+        savedKey &&
+        validateKeyFormat(savedKey)
+    ){
+
+        document
+            .getElementById("keyIn")
+            .value =
+            savedKey;
+
+        startSystem();
+    }
+};
+
+
+/* =====================================
+   START
+===================================== */
+
+function startSystem(){
+
+    /*
+       Browser sound permission starts
+       after user interaction.
+    */
+
+    initAudio();
+
+    const key =
+        document
+            .getElementById("keyIn")
+            .value
+            .trim();
+
+
+    if(
+        validateKeyFormat(key)
+    ){
+
+        localStorage.setItem(
+            "FB_ACTIVE_KEY",
+            key
+        );
+
+
+        document
+            .getElementById("loginPage")
+            .classList
+            .add("hidden");
+
+
+        document
+            .getElementById("appPage")
+            .classList
+            .remove("hidden");
+
+
+        runLogic();
+
+    }
+    else{
+
+        document
+            .getElementById("err")
+            .innerText =
+            "INVALID KEY!";
+    }
+}
+
+
+/* =====================================
+   ADD HISTORY
+===================================== */
+
+function addHistoryRow(
+    period,
+    actualNum,
+    actualSize,
+    prediction,
+    predictionNums
+){
+
+    const logs =
+        document.getElementById(
+            "logs"
+        );
+
+
+    const empty =
+        logs.querySelector(
+            ".empty"
+        );
+
+
+    if(empty){
+        logs.innerHTML = "";
+    }
+
+
+    /*
+       Existing data is used.
+       Only the display format changes.
+    */
+
+    const numberHit =
+        predictionNums.includes(
+            actualNum
+        );
+
+
+    const sizeHit =
+        prediction === actualSize;
+
+
+    let status = "LOSS";
+
+    let statusClass = "loss";
+
+    let soundType = "loss";
+
+
+    if(numberHit){
+
+        status = "JACKPOT";
+
+        statusClass = "jackpot";
+
+        soundType = "jackpot";
+
+    }
+    else if(sizeHit){
+
+        status = "WIN";
+
+        statusClass = "win";
+
+        soundType = "win";
+    }
+
+
+    const periodShort =
+        String(period)
+        .slice(-5);
+
+
+    const numClass =
+        actualNum >= 5
+        ? "big-num"
+        : "small-num";
+
+
+    const bsClass =
+        actualSize === "BIG"
+        ? "bs-big"
+        : "bs-small";
+
+
+    const predClass =
+        prediction === "BIG"
+        ? "pred-big"
+        : "pred-small";
+
+
+    const row =
+        document.createElement(
+            "tr"
+        );
+
+
+    row.className =
+        "new-row";
+
+
+    row.innerHTML = `
+
+        <td class="period">
+            ...${periodShort}
+        </td>
+
+        <td class="num ${numClass}">
+            ${actualNum}
+        </td>
+
+        <td class="${bsClass}">
+            ${actualSize}
+        </td>
+
+        <td class="${predClass}">
+            ${prediction}
+        </td>
+
+        <td class="pnum">
+            ${predictionNums.join(", ")}
+        </td>
+
+        <td>
+            <span class="result ${statusClass}">
+                ${status}
+            </span>
+        </td>
+
+    `;
+
+
+    logs.insertBefore(
+        row,
+        logs.firstChild
+    );
+
+
+    /*
+       Maximum 20 rows so the
+       page doesn't become huge.
+    */
+
+    while(
+        logs.children.length > 20
+    ){
+
+        logs.removeChild(
+            logs.lastElementChild
+        );
+    }
+
+
+    playResultSound(
+        soundType
+    );
+}
+
+
+/* =====================================
+   ORIGINAL API / PREDICTION LOGIC
+===================================== */
+
+async function runLogic(){
+
+    setInterval(
+        async () => {
+
+            try{
+
+                const res =
+                    await fetch(
+                        "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json"
+                    );
+
+
+                const json =
+                    await res.json();
+
+
+                const latest =
+                    json.data.list[0];
+
+
+                /*
+                   ORIGINAL PREDICTION
+                */
+
+                const last5 =
+                    json.data.list
+                    .slice(0,5)
+                    .map(
+                        x =>
+                        parseInt(
+                            x.number
+                        ) >= 5
+                        ? "BIG"
+                        : "SMALL"
+                    );
+
+
+                const nextPred =
+                    last5.filter(
+                        x =>
+                        x === "BIG"
+                    ).length > 2
+                    ? "BIG"
+                    : "SMALL";
+
+
+                if(
+                    window.lastId !==
+                    latest.issueNumber
+                ){
+
+                    const actualNum =
+                        parseInt(
+                            latest.number
+                        );
+
+
+                    const actualSize =
+                        actualNum >= 5
+                        ? "BIG"
+                        : "SMALL";
+
+
+                    let lastPred =
+                        window.savedPrediction ||
+                        nextPred;
+
+
+                    let lastOpps =
+                        window.savedOpps ||
+                        [];
+
+
+                    if(window.lastId){
+
+                        addHistoryRow(
+
+                            latest.issueNumber,
+
+                            actualNum,
+
+                            actualSize,
+
+                            lastPred,
+
+                            lastOpps
+
+                        );
+                    }
+
+
+                    window.lastId =
+                        latest.issueNumber;
+
+
+                    window.savedPrediction =
+                        nextPred;
+
+
+                    /*
+                       ORIGINAL OPPOSITE LOGIC
+                    */
+
+                    const pool =
+                        nextPred === "BIG"
+                        ? S_POOL
+                        : B_POOL;
+
+
+                    currentOpposites =
+                        pool
+                        .slice()
+                        .sort(
+                            () =>
+                            0.5 -
+                            Math.random()
+                        )
+                        .slice(0,2);
+
+
+                    window.savedOpps =
+                        currentOpposites;
+                }
+
+
+                /*
+                   CURRENT PERIOD
+                */
+
+                document
+                    .getElementById("pID")
+                    .innerText =
+                    "PERIOD: " +
+                    (
+                        BigInt(
+                            latest.issueNumber
+                        ) + 1n
+                    ).toString();
+
+
+                document
+                    .getElementById("pRes")
+                    .innerText =
+                    nextPred;
+
+
+                document
+                    .getElementById("pOpps")
+                    .innerText =
+                    "OPPOSITE NUMS: " +
+                    currentOpposites.join(
+                        ", "
+                    );
+
+
+            }
+            catch(e){
+
+                console.log(
+                    "API error:",
+                    e
+                );
+            }
+
+        },
+        3000
+    );
+}
+
+
+/* =====================================
+   ADMIN
+===================================== */
+
+function triggerAdmin(){
+
+    if(
+        prompt("PASSWORD:") ===
+        ADMIN_PASS
+    ){
+
+        document
+            .getElementById("adminPanel")
+            .classList
+            .remove("hidden");
+
+
+        document
+            .getElementById("overlay")
+            .classList
+            .remove("hidden");
+    }
+}
+
+
+function genKey(){
+
+    const mins =
+        document
+            .getElementById(
+                "keyValidity"
+            )
+            .value;
+
+
+    const expiryTime =
+        Date.now() +
+        (
+            mins *
+            60 *
+            1000
+        );
+
+
+    const randomStr =
+        Math.random()
+        .toString(36)
+        .substr(2,5)
+        .toUpperCase();
+
+
+    const newKey =
+        `SR-VIP-${randomStr}-${btoa(
+            expiryTime.toString()
+        )}`;
+
+
+    document
+        .getElementById("outKey")
+        .innerText =
+        "KEY: " + newKey;
+
+
+    if(navigator.clipboard){
+
+        navigator.clipboard
+            .writeText(newKey)
+            .then(
+                () => alert("COPIED!")
+            )
+            .catch(
+                () => {}
+            );
+    }
+}
+
+
+function logout(){
+
+    localStorage.removeItem(
+        "SR_ACTIVE_KEY"
+    );
+
+    location.reload();
+}
+
+
+function closeAdmin(){
+
+    document
+        .getElementById("adminPanel")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("overlay")
+        .classList
+        .add("hidden");
+}
+
+</script>
+
+</body>
+</html>
